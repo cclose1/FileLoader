@@ -1,0 +1,1039 @@
+
+<lg:log xmlns:lg="http://AVICode.com/Intercept/PMonitorLog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <uniqueID>4eaf6f00-1024-0000-ce01-0000a954c90f</uniqueID>
+    <processName>w3wp.exe</processName>
+    <processID>4132</processID>
+    <processStartTime>2011-11-01T04:01:04</processStartTime>
+    <fullAppName>/LM/W3SVC/1/Root/AppServer</fullAppName>
+    <date>2011-11-01T11:14:54.834</date>
+    <source>Default Web Site/AppServer</source>
+    <component>System.Web.dll</component>
+    <componentVersion>2.0.0.0</componentVersion>
+    <eventGroupLocator>Default Web Site/AppServer;System.Web.HttpApplication.System.Web.IHttpAsyncHandler.BeginProcessRequest;9f87423ae5cd91b265efaf7d1353a54224aa61dc;</eventGroupLocator>
+    <skippedEvents>0</skippedEvents>
+    <mode>operation</mode>
+    <applicationPool>AppServer</applicationPool>
+    <serverAgentVersion>5.6.248</serverAgentVersion>
+    <windowsVersion platform="2" major="5" minor="2" type="3" mask="274" sp="2" bitType="9" metrics="89" />
+    <callGroups>
+        <callGroup name="SQL Client calls" duration="3178" count="39" />
+    </callGroups>
+    <properties>
+        <add name="heavyLightStatus">heavy</add>
+        <add name="threadId">117548272</add>
+        <add name="fullAppPath">Default Web Site/AppServer</add>
+        <add name="cpuCores">2</add>
+    </properties>
+    <events>
+        <event>
+            <processTime>15734</processTime>
+            <enter>0</enter>
+            <leave>16567</leave>
+            <entryID>0</entryID>
+            <stack>
+                <stackPoint>
+                    <callGroupType></callGroupType>
+                    <namespace>System.Web.HttpApplication.System.Web</namespace>
+                    <class>IHttpAsyncHandler</class>
+                    <method>BeginProcessRequest</method>
+                    <this>0</this>
+                    <methodInfo>System.Web.HttpContext context,System.AsyncCallback cb,System.Web.HttpContext extraData</methodInfo>
+                    <parameters>
+                        <variable type="simple">
+                            <name>path</name>
+                            <type>System.String</type>
+                            <value>/appserver/CBCFormTemplate.asmx</value>
+                        </variable>
+                        <variable type="simple">
+                            <name>userHostAddress</name>
+                            <type>System.String</type>
+                            <value>20.146.100.221</value>
+                        </variable>
+                        <variable type="simple">
+                            <name>objectURI</name>
+                            <type>System.String</type>
+                            <value>http://nhsappadc57101.csclsp.net/appserver/CBCFormTemplate.asmx</value>
+                        </variable>
+                    </parameters>
+                </stackPoint>
+            </stack>
+            <events>
+                <event>
+                    <processTime>15733</processTime>
+                    <enter>0</enter>
+                    <leave>16566</leave>
+                    <entryID>1</entryID>
+                    <stack>
+                        <stackPoint>
+                            <callGroupType></callGroupType>
+                            <namespace>System.Web.Services.Protocols</namespace>
+                            <class>LogicalMethodInfo</class>
+                            <method>Invoke</method>
+                            <this>0</this>
+                            <methodInfo>object object, object[] values</methodInfo>
+                            <parameters>
+                                <variable type="simple">
+                                    <name>path</name>
+                                    <type>System.String</type>
+                                    <value>/appserver/CBCFormTemplate.asmx</value>
+                                </variable>
+                                <variable type="simple">
+                                    <name>methodName</name>
+                                    <type>System.String</type>
+                                    <value>BulkManageStatus</value>
+                                </variable>
+                                <variable type="simple">
+                                    <name>absoluteUri</name>
+                                    <type>System.String</type>
+                                    <value>http://nhsappadc57101.csclsp.net/appserver/CBCFormTemplate.asmx</value>
+                                </variable>
+                                <variable type="simple">
+                                    <name>host</name>
+                                    <type>System.String</type>
+                                    <value>nhsappadc57101.csclsp.net</value>
+                                </variable>
+                                <variable type="simple">
+                                    <name>userHostAddress</name>
+                                    <type>System.String</type>
+                                    <value>20.146.100.221</value>
+                                </variable>
+                                <variable type="array">
+                                    <name>parameters</name>
+                                    <type>System.Object[]</type>
+                                    <variables>
+                                        <variable type="class">
+                                            <name>0</name>
+                                            <type>iSOFT.LORENZO.iForms.Activity.FormTemplates.CReqMsgBulkManageStatus</type>
+                                            <variables>
+                                                <variable type="class">
+                                                    <name>bulkobjectBC</name>
+                                                    <type>iSOFT.LORENZO.iForms.Entity.BulkManageStatus</type>
+                                                    <variables>
+                                                        <variable type="class">
+                                                            <name>oid</name>
+                                                            <type>System.String[]</type>
+                                                            <value>No member variables are collected due to the detail level setting.</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>comments</name>
+                                                            <type>System.String</type>
+                                                            <value>Needs update to cater for clearing hidden data items (workaround while waiting for TCN delivery).  Fitment results due yesterday, and Alpha/DIT testing starts today, so any issues raised in those may also be fixed in this version of the form.</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>activestatus</name>
+                                                            <type>System.Int16</type>
+                                                            <value>1</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>performedRole</name>
+                                                            <type>System.Int64</type>
+                                                            <value>600000214563</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>useroid</name>
+                                                            <type>System.Int64</type>
+                                                            <value>0</value>
+                                                        </variable>
+                                                        <variable type="class">
+                                                            <name>templateblobtoupdate</name>
+                                                            <type>System.Collections.Generic.List`1[iSOFT.LORENZO.iForms.Entity.UpdatedTemplateBlob]</type>
+                                                            <value>No member variables are collected due to the detail level setting.</value>
+                                                        </variable>
+                                                    </variables>
+                                                </variable>
+                                                <variable type="class">
+                                                    <name>oContextInformation</name>
+                                                    <type>iSOFT.LORENZO.Context.CContextInformation</type>
+                                                    <variables>
+                                                        <variable type="simple">
+                                                            <name>BPCode</name>
+                                                            <type>System.String</type>
+                                                            <value>CBCFormTemplateWS.BulkManageStatus</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>ReqIID</name>
+                                                            <type>System.String</type>
+                                                            <value>0ed50549-bb30-48fd-a040-a8898a6e78dc</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>UserID</name>
+                                                            <type>System.Int64</type>
+                                                            <value>600000166012</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>RemoteHostID</name>
+                                                            <type>System.String</type>
+                                                            <value>NHSXENADC57221</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>OrganizationID</name>
+                                                            <type>System.String</type>
+                                                            <value>600000117784</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>SecurityToken</name>
+                                                            <type>System.String</type>
+                                                            <value>962478385#634557390095556433</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>ResToken</name>
+                                                            <type>System.String</type>
+                                                            <value></value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>LoginName</name>
+                                                            <type>System.String</type>
+                                                            <value>rlangley</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>RemoteHostIP</name>
+                                                            <type>System.String</type>
+                                                            <value>10.1.100.221</value>
+                                                        </variable>
+                                                        <variable type="class">
+                                                            <name>Errors</name>
+                                                            <type>iSOFT.LORENZO.Context.CErrorCollection</type>
+                                                            <value>No member variables are collected due to the detail level setting.</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>CareActivityCode</name>
+                                                            <type>System.String</type>
+                                                            <value>CBCFormTemplate.BulkManageStatus</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>MultiCampusPattern</name>
+                                                            <type>iSOFT.LORENZO.Context.enmMultiCampusPattern</type>
+                                                            <value>NONE</value>
+                                                        </variable>
+                                                        <variable type="simple">
+                                                            <name>ReleaseVersion</name>
+                                                            <type>System.Byte</type>
+                                                            <value>2</value>
+                                                        </variable>
+                                                    </variables>
+                                                </variable>
+                                            </variables>
+                                        </variable>
+                                    </variables>
+                                </variable>
+                            </parameters>
+                        </stackPoint>
+                    </stack>
+                    <events>
+                        <event>
+                            <processTime>15733</processTime>
+                            <enter>0</enter>
+                            <leave>16566</leave>
+                            <entryID>2</entryID>
+                            <stack>
+                                <stackPoint>
+                                    <method>iSOFT.LORENZO.iForms.Activity.FormTemplates.CBCFormTemplateWS.BulkManageStatus</method>
+                                </stackPoint>
+                            </stack>
+                            <events>
+                                <event>
+                                    <processTime>15730</processTime>
+                                    <enter>3</enter>
+                                    <leave>16566</leave>
+                                    <entryID>3</entryID>
+                                    <stack>
+                                        <stackPoint>
+                                            <method>iSOFT.LORENZO.iForms.Activity.FormTemplates.CBCFormTemplate.BulkManageStatus</method>
+                                        </stackPoint>
+                                    </stack>
+                                    <events>
+                                        <event>
+                                            <processTime>4201</processTime>
+                                            <enter>3</enter>
+                                            <leave>4495</leave>
+                                            <entryID>4</entryID>
+                                            <stack>
+                                                <stackPoint>
+                                                    <method>iSOFT.LORENZO.iForms.Activity.FormTemplates.CBCFormTemplate.Read</method>
+                                                </stackPoint>
+                                            </stack>
+                                            <events>
+                                                <event>
+                                                    <processTime>4186</processTime>
+                                                    <enter>18</enter>
+                                                    <leave>4495</leave>
+                                                    <entryID>5</entryID>
+                                                    <stack>
+                                                        <stackPoint>
+                                                            <method>iSOFT.LORENZO.iForms.Common.Compresssor.DeCompress</method>
+                                                        </stackPoint>
+                                                    </stack>
+                                                    <events>
+                                                        <event>
+                                                            <processTime>4186</processTime>
+                                                            <enter>18</enter>
+                                                            <leave>4495</leave>
+                                                            <entryID>6</entryID>
+                                                            <stack>
+                                                                <stackPoint>
+                                                                    <method>iSOFT.LORENZO.CompressionService.CCompressionUtility.DeCompress</method>
+                                                                </stackPoint>
+                                                            </stack>
+                                                            <events>
+                                                                <event>
+                                                                    <processTime>4186</processTime>
+                                                                    <enter>18</enter>
+                                                                    <leave>4495</leave>
+                                                                    <entryID>7</entryID>
+                                                                    <stack>
+                                                                        <stackPoint>
+                                                                            <method>iSOFT.LORENZO.CompressionService.CCompressionUtility.DeCompress_BZip2</method>
+                                                                        </stackPoint>
+                                                                    </stack>
+                                                                    <events>
+                                                                        <event>
+                                                                            <processTime>4183</processTime>
+                                                                            <enter>18</enter>
+                                                                            <leave>4492</leave>
+                                                                            <entryID>8</entryID>
+                                                                            <stack>
+                                                                                <stackPoint>
+                                                                                    <method>iSOFT.LORENZO.CompressionService.BZip2.Decompress</method>
+                                                                                </stackPoint>
+                                                                            </stack>
+                                                                            <selfTime>4183</selfTime>
+                                                                        </event>
+                                                                    </events>
+                                                                    <selfTime>3</selfTime>
+                                                                </event>
+                                                            </events>
+                                                            <selfTime>0</selfTime>
+                                                        </event>
+                                                    </events>
+                                                    <selfTime>0</selfTime>
+                                                </event>
+                                            </events>
+                                            <selfTime>15</selfTime>
+                                        </event>
+                                        <event>
+                                            <processTime>10900</processTime>
+                                            <enter>4503</enter>
+                                            <leave>15945</leave>
+                                            <entryID>9</entryID>
+                                            <stack>
+                                                <stackPoint>
+                                                    <method>iSOFT.LORENZO.iForms.Activity.FormTemplates.CBCFormTemplate.Create</method>
+                                                </stackPoint>
+                                            </stack>
+                                            <events>
+                                                <event>
+                                                    <processTime>10900</processTime>
+                                                    <enter>4503</enter>
+                                                    <leave>15945</leave>
+                                                    <entryID>10</entryID>
+                                                    <stack>
+                                                        <stackPoint>
+                                                            <method>iSOFT.LORENZO.iForms.Activity.FormTemplates.CBCFormTemplate.SaveFormAssociations</method>
+                                                        </stackPoint>
+                                                    </stack>
+                                                    <events>
+                                                        <event>
+                                                            <processTime>2562</processTime>
+                                                            <enter>4672</enter>
+                                                            <leave>7259</leave>
+                                                            <entryID>11</entryID>
+                                                            <stack>
+                                                                <stackPoint>
+                                                                    <method>iSOFT.LORENZO.iForms.Activity.FormTemplates.CBCFormTemplate.SaveFormTempDITVP</method>
+                                                                </stackPoint>
+                                                            </stack>
+                                                            <events>
+                                                                <event>
+                                                                    <processTime>2560</processTime>
+                                                                    <enter>4673</enter>
+                                                                    <leave>7259</leave>
+                                                                    <entryID>12</entryID>
+                                                                    <stack>
+                                                                        <stackPoint>
+                                                                            <method>iSOFT.LORENZO.iForms.DAC.TVP.DAC.InsertIFMFRMTEMPDI_TVPDAC.pInsert_IFMFormTemplateDataItem_TVP</method>
+                                                                        </stackPoint>
+                                                                    </stack>
+                                                                    <events>
+                                                                        <event>
+                                                                            <processTime>2560</processTime>
+                                                                            <enter>4673</enter>
+                                                                            <leave>7259</leave>
+                                                                            <entryID>13</entryID>
+                                                                            <stack>
+                                                                                <stackPoint>
+                                                                                    <method>iSOFT.LORENZO.DAE.CDAEManager.ExecuteNonQuery</method>
+                                                                                </stackPoint>
+                                                                            </stack>
+                                                                            <events>
+                                                                                <event>
+                                                                                    <processTime>2560</processTime>
+                                                                                    <enter>4674</enter>
+                                                                                    <leave>7259</leave>
+                                                                                    <entryID>14</entryID>
+                                                                                    <stack>
+                                                                                        <stackPoint>
+                                                                                            <method>iSOFT.LORENZO.DAE.CSQLAccess.ExecuteNonQuery</method>
+                                                                                        </stackPoint>
+                                                                                    </stack>
+                                                                                    <events>
+                                                                                        <event>
+                                                                                            <processTime>2560</processTime>
+                                                                                            <enter>4674</enter>
+                                                                                            <leave>7234</leave>
+                                                                                            <entryID>15</entryID>
+                                                                                            <stack>
+                                                                                                <stackPoint>
+                                                                                                    <callGroupType>SQL Client calls</callGroupType>
+                                                                                                    <namespace>System.Data.SqlClient</namespace>
+                                                                                                    <class>SqlCommand</class>
+                                                                                                    <method>ExecuteNonQuery</method>
+                                                                                                    <this>0</this>
+                                                                                                    <parameters>
+                                                                                                        <variable type="simple">
+                                                                                                            <name>cmdText</name>
+                                                                                                            <type>System.String</type>
+                                                                                                            <value>dbo.pInsert_IFMFMTPLDITVP_264700_01</value>
+                                                                                                        </variable>
+                                                                                                        <variable type="array">
+                                                                                                            <name>parameters</name>
+                                                                                                            <type>System.Data.SqlClient.SqlParameterCollection</type>
+                                                                                                            <variables>
+                                                                                                                <variable type="class">
+                                                                                                                    <name>[@Tbl_IFMFrmTempltDIs]</name>
+                                                                                                                    <type>System.Data.DataTable</type>
+                                                                                                                    <variables>
+                                                                                                                        <variable type="simple">
+                                                                                                                            <name>tableName</name>
+                                                                                                                            <type>System.String</type>
+                                                                                                                            <value></value>
+                                                                                                                        </variable>
+                                                                                                                        <variable type="array" initSize="118" limit="5">
+                                                                                                                            <name>rows</name>
+                                                                                                                            <type>System.Data.DataRowCollection</type>
+                                                                                                                            <variables>
+                                                                                                                                <variable type="class">
+                                                                                                                                    <name>0</name>
+                                                                                                                                    <type>System.Data.DataRow</type>
+                                                                                                                                    <variables>
+                                                                                                                                        <variable type="simple">
+                                                                                                                                            <name>_rowID</name>
+                                                                                                                                            <type>System.Int32</type>
+                                                                                                                                            <value>1</value>
+                                                                                                                                        </variable>
+                                                                                                                                        <variable type="array" initSize="24" limit="10">
+                                                                                                                                            <name>ItemArray</name>
+                                                                                                                                            <type>System.Object[]</type>
+                                                                                                                                            <variables>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>0</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000000812</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>1</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>ClinHistSymptomPatientRelativeAnxiousFallRisk</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>2</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000005266</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>3</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>ClinHistSymptomPatientRelativeAnxiousFallRisk</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>4</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>8</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>5</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>1</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>6</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>7</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>8</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>9</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                            </variables>
+                                                                                                                                        </variable>
+                                                                                                                                    </variables>
+                                                                                                                                </variable>
+                                                                                                                                <variable type="class">
+                                                                                                                                    <name>1</name>
+                                                                                                                                    <type>System.Data.DataRow</type>
+                                                                                                                                    <variables>
+                                                                                                                                        <variable type="simple">
+                                                                                                                                            <name>_rowID</name>
+                                                                                                                                            <type>System.Int32</type>
+                                                                                                                                            <value>2</value>
+                                                                                                                                        </variable>
+                                                                                                                                        <variable type="array" initSize="24" limit="10">
+                                                                                                                                            <name>ItemArray</name>
+                                                                                                                                            <type>System.Object[]</type>
+                                                                                                                                            <variables>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>0</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000000812</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>1</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingIndependentlyNoAid</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>2</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000005274</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>3</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingIndependentlyNoAid</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>4</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>8</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>5</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>1</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>6</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>7</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>8</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>9</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                            </variables>
+                                                                                                                                        </variable>
+                                                                                                                                    </variables>
+                                                                                                                                </variable>
+                                                                                                                                <variable type="class">
+                                                                                                                                    <name>2</name>
+                                                                                                                                    <type>System.Data.DataRow</type>
+                                                                                                                                    <variables>
+                                                                                                                                        <variable type="simple">
+                                                                                                                                            <name>_rowID</name>
+                                                                                                                                            <type>System.Int32</type>
+                                                                                                                                            <value>3</value>
+                                                                                                                                        </variable>
+                                                                                                                                        <variable type="array" initSize="24" limit="10">
+                                                                                                                                            <name>ItemArray</name>
+                                                                                                                                            <type>System.Object[]</type>
+                                                                                                                                            <variables>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>0</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000000812</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>1</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingInBedAssistanceComp</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>2</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000005293</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>3</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingInBedAssistanceComp</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>4</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>12</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>5</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>1</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>6</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>7</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>8</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>9</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                            </variables>
+                                                                                                                                        </variable>
+                                                                                                                                    </variables>
+                                                                                                                                </variable>
+                                                                                                                                <variable type="class">
+                                                                                                                                    <name>3</name>
+                                                                                                                                    <type>System.Data.DataRow</type>
+                                                                                                                                    <variables>
+                                                                                                                                        <variable type="simple">
+                                                                                                                                            <name>_rowID</name>
+                                                                                                                                            <type>System.Int32</type>
+                                                                                                                                            <value>4</value>
+                                                                                                                                        </variable>
+                                                                                                                                        <variable type="array" initSize="24" limit="10">
+                                                                                                                                            <name>ItemArray</name>
+                                                                                                                                            <type>System.Object[]</type>
+                                                                                                                                            <variables>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>0</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000000812</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>1</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingInBedAssistance_FunctionMobilityPHAFMovingInBedAssistanceComp</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>2</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000005283</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>3</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingInBedAssistance</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>4</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>8</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>5</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>1</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>6</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>7</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>8</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>9</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                            </variables>
+                                                                                                                                        </variable>
+                                                                                                                                    </variables>
+                                                                                                                                </variable>
+                                                                                                                                <variable type="class">
+                                                                                                                                    <name>4</name>
+                                                                                                                                    <type>System.Data.DataRow</type>
+                                                                                                                                    <variables>
+                                                                                                                                        <variable type="simple">
+                                                                                                                                            <name>_rowID</name>
+                                                                                                                                            <type>System.Int32</type>
+                                                                                                                                            <value>5</value>
+                                                                                                                                        </variable>
+                                                                                                                                        <variable type="array" initSize="24" limit="10">
+                                                                                                                                            <name>ItemArray</name>
+                                                                                                                                            <type>System.Object[]</type>
+                                                                                                                                            <variables>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>0</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000000812</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>1</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingInBedAssistanceOther_FunctionMobilityPHAFMovingInBedAssistanceComp</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>2</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000005286</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>3</name>
+                                                                                                                                                    <type>System.String</type>
+                                                                                                                                                    <value>FunctionMobilityPHAFMovingInBedAssistanceOther</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>4</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>3</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>5</name>
+                                                                                                                                                    <type>System.Int16</type>
+                                                                                                                                                    <value>2</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>6</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>7</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>8</name>
+                                                                                                                                                    <type>System.Int64</type>
+                                                                                                                                                    <value>600000166012</value>
+                                                                                                                                                </variable>
+                                                                                                                                                <variable type="simple">
+                                                                                                                                                    <name>9</name>
+                                                                                                                                                    <type>System.DateTime</type>
+                                                                                                                                                    <value>634557428995127173</value>
+                                                                                                                                                </variable>
+                                                                                                                                            </variables>
+                                                                                                                                        </variable>
+                                                                                                                                    </variables>
+                                                                                                                                </variable>
+                                                                                                                            </variables>
+                                                                                                                        </variable>
+                                                                                                                    </variables>
+                                                                                                                </variable>
+                                                                                                            </variables>
+                                                                                                        </variable>
+                                                                                                        <variable type="simple">
+                                                                                                            <name>dataSource</name>
+                                                                                                            <type>System.String</type>
+                                                                                                            <value>NHSSQLADC57103.csclsp.net\PBTCDC559</value>
+                                                                                                        </variable>
+                                                                                                        <variable type="simple">
+                                                                                                            <name>database</name>
+                                                                                                            <type>System.String</type>
+                                                                                                            <value>LORENZO</value>
+                                                                                                        </variable>
+                                                                                                    </parameters>
+                                                                                                </stackPoint>
+                                                                                            </stack>
+                                                                                            <selfTime>2560</selfTime>
+                                                                                        </event>
+                                                                                    </events>
+                                                                                    <selfTime>0</selfTime>
+                                                                                </event>
+                                                                            </events>
+                                                                            <selfTime>0</selfTime>
+                                                                        </event>
+                                                                    </events>
+                                                                    <selfTime>0</selfTime>
+                                                                </event>
+                                                            </events>
+                                                            <selfTime>2</selfTime>
+                                                        </event>
+                                                        <event>
+                                                            <processTime>8171</processTime>
+                                                            <enter>7259</enter>
+                                                            <leave>15945</leave>
+                                                            <entryID>16</entryID>
+                                                            <stack>
+                                                                <stackPoint>
+                                                                    <method>iSOFT.LORENZO.iForms.Activity.FormTemplates.CBCFormTemplate.SaveFormTempData</method>
+                                                                </stackPoint>
+                                                            </stack>
+                                                            <events>
+                                                                <event>
+                                                                    <processTime>8165</processTime>
+                                                                    <enter>7259</enter>
+                                                                    <leave>15938</leave>
+                                                                    <entryID>17</entryID>
+                                                                    <stack>
+                                                                        <stackPoint>
+                                                                            <method>iSOFT.LORENZO.iForms.Common.Compresssor.Compress</method>
+                                                                        </stackPoint>
+                                                                    </stack>
+                                                                    <events>
+                                                                        <event>
+                                                                            <processTime>8165</processTime>
+                                                                            <enter>7259</enter>
+                                                                            <leave>15938</leave>
+                                                                            <entryID>18</entryID>
+                                                                            <stack>
+                                                                                <stackPoint>
+                                                                                    <method>iSOFT.LORENZO.CompressionService.CCompressionUtility.Compress</method>
+                                                                                </stackPoint>
+                                                                            </stack>
+                                                                            <events>
+                                                                                <event>
+                                                                                    <processTime>8165</processTime>
+                                                                                    <enter>7259</enter>
+                                                                                    <leave>15938</leave>
+                                                                                    <entryID>19</entryID>
+                                                                                    <stack>
+                                                                                        <stackPoint>
+                                                                                            <method>iSOFT.LORENZO.CompressionService.CCompressionUtility.Compress_BZip2</method>
+                                                                                        </stackPoint>
+                                                                                    </stack>
+                                                                                    <events>
+                                                                                        <event>
+                                                                                            <processTime>8164</processTime>
+                                                                                            <enter>7259</enter>
+                                                                                            <leave>15938</leave>
+                                                                                            <entryID>20</entryID>
+                                                                                            <stack>
+                                                                                                <stackPoint>
+                                                                                                    <method>iSOFT.LORENZO.CompressionService.BZip2.Compress</method>
+                                                                                                </stackPoint>
+                                                                                            </stack>
+                                                                                            <events>
+                                                                                                <event>
+                                                                                                    <processTime>5492</processTime>
+                                                                                                    <enter>10163</enter>
+                                                                                                    <leave>15938</leave>
+                                                                                                    <entryID>21</entryID>
+                                                                                                    <stack>
+                                                                                                        <stackPoint>
+                                                                                                            <method>iSOFT.LORENZO.CompressionService.BZip2OutputStream.Close</method>
+                                                                                                        </stackPoint>
+                                                                                                    </stack>
+                                                                                                    <events>
+                                                                                                        <event>
+                                                                                                            <processTime>5492</processTime>
+                                                                                                            <enter>10163</enter>
+                                                                                                            <leave>15938</leave>
+                                                                                                            <entryID>22</entryID>
+                                                                                                            <stack>
+                                                                                                                <stackPoint>
+                                                                                                                    <method>iSOFT.LORENZO.CompressionService.BZip2OutputStream.Dispose</method>
+                                                                                                                </stackPoint>
+                                                                                                            </stack>
+                                                                                                            <events>
+                                                                                                                <event>
+                                                                                                                    <processTime>5492</processTime>
+                                                                                                                    <enter>10163</enter>
+                                                                                                                    <leave>15938</leave>
+                                                                                                                    <entryID>23</entryID>
+                                                                                                                    <stack>
+                                                                                                                        <stackPoint>
+                                                                                                                            <method>iSOFT.LORENZO.CompressionService.BZip2OutputStream.EndBlock</method>
+                                                                                                                        </stackPoint>
+                                                                                                                    </stack>
+                                                                                                                    <events>
+                                                                                                                        <event>
+                                                                                                                            <processTime>5157</processTime>
+                                                                                                                            <enter>10163</enter>
+                                                                                                                            <leave>15581</leave>
+                                                                                                                            <entryID>24</entryID>
+                                                                                                                            <stack>
+                                                                                                                                <stackPoint>
+                                                                                                                                    <method>iSOFT.LORENZO.CompressionService.BZip2OutputStream.DoReversibleTransformation</method>
+                                                                                                                                </stackPoint>
+                                                                                                                            </stack>
+                                                                                                                            <events>
+                                                                                                                                <event>
+                                                                                                                                    <processTime>5157</processTime>
+                                                                                                                                    <enter>10163</enter>
+                                                                                                                                    <leave>15581</leave>
+                                                                                                                                    <entryID>25</entryID>
+                                                                                                                                    <stack>
+                                                                                                                                        <stackPoint>
+                                                                                                                                            <method>iSOFT.LORENZO.CompressionService.BZip2OutputStream.MainSort</method>
+                                                                                                                                        </stackPoint>
+                                                                                                                                    </stack>
+                                                                                                                                    <events>
+                                                                                                                                        <event>
+                                                                                                                                            <processTime>1808</processTime>
+                                                                                                                                            <enter>10811</enter>
+                                                                                                                                            <leave>12619</leave>
+                                                                                                                                            <entryID>26</entryID>
+                                                                                                                                            <stack>
+                                                                                                                                                <stackPoint>
+                                                                                                                                                    <method>iSOFT.LORENZO.CompressionService.BZip2OutputStream.QSort3</method>
+                                                                                                                                                </stackPoint>
+                                                                                                                                            </stack>
+                                                                                                                                            <selfTime>1808</selfTime>
+                                                                                                                                        </event>
+                                                                                                                                    </events>
+                                                                                                                                    <selfTime>3349</selfTime>
+                                                                                                                                </event>
+                                                                                                                            </events>
+                                                                                                                            <selfTime>0</selfTime>
+                                                                                                                        </event>
+                                                                                                                    </events>
+                                                                                                                    <selfTime>335</selfTime>
+                                                                                                                </event>
+                                                                                                            </events>
+                                                                                                            <selfTime>0</selfTime>
+                                                                                                        </event>
+                                                                                                    </events>
+                                                                                                    <selfTime>0</selfTime>
+                                                                                                </event>
+                                                                                            </events>
+                                                                                            <selfTime>2672</selfTime>
+                                                                                        </event>
+                                                                                    </events>
+                                                                                    <selfTime>1</selfTime>
+                                                                                </event>
+                                                                            </events>
+                                                                            <selfTime>0</selfTime>
+                                                                        </event>
+                                                                    </events>
+                                                                    <selfTime>0</selfTime>
+                                                                </event>
+                                                            </events>
+                                                            <selfTime>6</selfTime>
+                                                        </event>
+                                                    </events>
+                                                    <selfTime>167</selfTime>
+                                                </event>
+                                            </events>
+                                            <selfTime>0</selfTime>
+                                        </event>
+                                    </events>
+                                    <selfTime>629</selfTime>
+                                </event>
+                            </events>
+                            <selfTime>3</selfTime>
+                        </event>
+                    </events>
+                    <selfTime>0</selfTime>
+                </event>
+            </events>
+            <selfTime>1</selfTime>
+        </event>
+    </events>
+    <troubleshootingData>
+        <frequency>9000</frequency>
+        <period>900000</period>
+        <counterTypes>
+            <counterType id="26" name="\.NET Apps\Monitored Requests/sec" type="Double" measure="requests/sec" />
+            <counterType id="27" name="\.NET Apps\Performance Events/sec" type="Double" measure="requests/sec" />
+            <counterType id="28" name="\.NET Apps\Exception Events/sec" type="Double" measure="requests/sec" />
+            <counterType id="29" name="\.NET Apps\Avg. Request Time" type="Double" measure="ms" />
+            <counterType id="18" name="\.NET CLR Exceptions\# of Exceps Thrown / sec" type="Double" measure="ops/sec" />
+            <counterType id="19" name="\.NET CLR Memory\# Bytes in all Heaps" type="Double" measure="B" />
+            <counterType id="20" name="\.NET CLR Memory\% Time in GC" type="Double" measure="% time" />
+            <counterType id="21" name="\.NET CLR Memory\# Gen 0 Collections" type="Double" measure="Gen 0 Collections" />
+            <counterType id="22" name="\.NET CLR Memory\# Gen 1 Collections" type="Double" measure="Gen 1 Collections" />
+            <counterType id="23" name="\.NET CLR Memory\# Gen 2 Collections" type="Double" measure="Gen 2 Collections" />
+            <counterType id="24" name="\.NET CLR Memory\Allocated Bytes/sec" type="Double" measure="B/sec" />
+            <counterType id="33" name="\ASP.NET Apps v2.0.50727\Sessions Active" type="Double" measure="sessions" />
+            <counterType id="34" name="\ASP.NET Apps v2.0.50727\Requests/Sec" type="Double" measure="requests/sec" />
+            <counterType id="35" name="\ASP.NET Apps v2.0.50727\Requests In Application Queue" type="Double" measure="requests" />
+            <counterType id="17" name="\LogicalDisk\% Free Space" type="Double" measure="% space" />
+            <counterType id="15" name="\Memory\Available MBytes" type="Double" measure="MB" />
+            <counterType id="16" name="\Memory\Pages/sec" type="Double" measure="pages/sec" />
+            <counterType id="36" name="\Network Interface\Bytes Total/sec" type="Double" measure="bytes/sec" />
+            <counterType id="37" name="\Network Interface\Output Queue Length" type="Double" measure="no suffix" />
+            <counterType id="38" name="\Network Interface\Bytes Total/sec" type="Double" measure="bytes/sec" />
+            <counterType id="39" name="\Network Interface\Output Queue Length" type="Double" measure="no suffix" />
+            <counterType id="40" name="\Network Interface\Bytes Total/sec" type="Double" measure="bytes/sec" />
+            <counterType id="41" name="\Network Interface\Output Queue Length" type="Double" measure="no suffix" />
+            <counterType id="7" name="\Process\ID Process" type="Double" measure="no suffix" />
+            <counterType id="8" name="\Process\% Processor Time" type="Double" measure="% time" />
+            <counterType id="11" name="\Process\Private Bytes" type="Double" measure="B" />
+            <counterType id="12" name="\Process\Virtual Bytes" type="Double" measure="B" />
+            <counterType id="14" name="\Processor\% Processor Time" type="Double" measure="% time" />
+        </counterTypes>
+        <counters>
+            <counter id="8">
+                <value>0.000000 0.173620 0.173620 0.173620 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 37.436925 0.000000 0.000000 0.173620 0.000000 0.520860 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.173620 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.173620 0.173620 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.173319 0.519957 0.000000 0.173319 0.519957 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.173620 8.854620 46.276199 0.330595 0.000000 0.346638 0.000000 0.000000 0.000000 0.000000 0.347240 0.173620 0.173620 0.000000 52.606860 108.165260</value>
+            </counter>
+            <counter id="11">
+                <value>2017779712.000000 2017861632.000000 2017927168.000000 2018066432.000000 2018066432.000000 2018131968.000000 2018131968.000000 2018197504.000000 2018148352.000000 2018344960.000000 2018369536.000000 2018369536.000000 2018369536.000000 2018369536.000000 2018451456.000000 2018582528.000000 2018648064.000000 2018787328.000000 2018787328.000000 2018787328.000000 2018852864.000000 2018803712.000000 2018934784.000000 2019024896.000000 2019024896.000000 2019024896.000000 2019024896.000000 2019024896.000000 2018975744.000000 2018975744.000000 2019074048.000000 2019074048.000000 2019074048.000000 2019074048.000000 2019000320.000000 2019000320.000000 2019000320.000000 2019074048.000000 2019074048.000000 2019074048.000000 2019074048.000000 2018975744.000000 2018975744.000000 2019049472.000000 2019049472.000000 2019049472.000000 2019049472.000000 2019049472.000000 2018975744.000000 2018975744.000000 2019024896.000000 2019024896.000000 2019024896.000000 2019024896.000000 2018975744.000000 2018975744.000000 2018975744.000000 2019024896.000000 2019024896.000000 2019024896.000000 2019024896.000000 2019000320.000000 2019000320.000000 2019024896.000000 2019024896.000000 2019024896.000000 2019024896.000000 2019024896.000000 2018959360.000000 2018959360.000000 2019082240.000000 2019082240.000000 2019082240.000000 2019082240.000000 2018983936.000000 2018983936.000000 2018983936.000000 2019008512.000000 2019004416.000000 2019004416.000000 2019004416.000000 2018955264.000000 2018955264.000000 2019004416.000000 2019004416.000000 2023788544.000000 2027061248.000000 2027061248.000000 2027036672.000000 2027036672.000000 2027061248.000000 2027061248.000000 2027061248.000000 2027061248.000000 2027016192.000000 2027040768.000000 2027040768.000000 2027139072.000000 2046447616.000000 1671163904.000000</value>
+            </counter>
+            <counter id="12">
+                <value>3955453952.000000 3954405376.000000 3954405376.000000 3955978240.000000 3955978240.000000 3955978240.000000 3955978240.000000 3955978240.000000 3954929664.000000 3954929664.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3954405376.000000 3954405376.000000 3954405376.000000 3955978240.000000 3955978240.000000 3955978240.000000 3955978240.000000 3954929664.000000 3954929664.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3954405376.000000 3954405376.000000 3956502528.000000 3956502528.000000 3956502528.000000 3956502528.000000 3954929664.000000 3954929664.000000 3954929664.000000 3956502528.000000 3956502528.000000 3956502528.000000 3956502528.000000 3954405376.000000 3954405376.000000 3955978240.000000 3955978240.000000 3955978240.000000 3955978240.000000 3955978240.000000 3954405376.000000 3954405376.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3954405376.000000 3954405376.000000 3954405376.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3954929664.000000 3954929664.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3954405376.000000 3954405376.000000 3957026816.000000 3957026816.000000 3957026816.000000 3957026816.000000 3954929664.000000 3954929664.000000 3954929664.000000 3955453952.000000 3955453952.000000 3955453952.000000 3955453952.000000 3954405376.000000 3954405376.000000 3955453952.000000 3955453952.000000 3955453952.000000 3956502528.000000 3956502528.000000 3955978240.000000 3955978240.000000 3956502528.000000 3956502528.000000 3956502528.000000 3956502528.000000 3955453952.000000 3955978240.000000 3955978240.000000 3958075392.000000 3958075392.000000 3957551104.000000</value>
+            </counter>
+            <counter id="18">
+                <value>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000</value>
+            </counter>
+            <counter id="19">
+                <value>8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 8830576.000000 3385048.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385096.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000 3385008.000000</value>
+            </counter>
+            <counter id="20">
+                <value>0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 0.000207 1.678792 0.110920 0.110920 0.110920 0.110920 0.110920 5.218348 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903 0.031903</value>
+            </counter>
+            <counter id="21">
+                <value>4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 4.000000 7.000000 10.000000 10.000000 10.000000 10.000000 10.000000 12.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000 14.000000</value>
+            </counter>
+            <counter id="22">
+                <value>2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 4.000000 7.000000 7.000000 7.000000 7.000000 7.000000 8.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000 10.000000</value>
+            </counter>
+            <counter id="23">
+                <value>1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000</value>
+            </counter>
+            <counter id="24">
+                <value>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1489135.557076 2725.980979 0.000000 0.000000 0.000000 0.000000 7268.758405 2721.417344 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000</value>
+            </counter>
+            <counter id="26">
+                <value>0.000000 0.111109 0.111109 0.111111 0.000000 0.000000 0.000000 0.111108 0.000000 0.222220 0.000000 0.000000 0.000000 0.000000 0.110917 0.110916 0.110917 0.000000 0.000000 0.000000 0.110912 0.000000 0.111110 0.110917 0.000000 0.000000 0.000000 0.111110 0.000000 0.222206 0.000000 0.000000 0.000000 0.000000 0.111108 0.111110 0.111110 0.000000 0.000000 0.000000 0.111108 0.000000 0.222221 0.000000 0.000000 0.000000 0.000000 0.111110 0.000000 0.221844 0.000000 0.000000 0.000000 0.000000 0.111109 0.111110 0.111108 0.000000 0.000000 0.000000 0.110912 0.000000 0.222219 0.000000 0.000000 0.000000 0.000000 0.110918 0.000000 0.221838 0.000000 0.000000 0.000000 0.000000 0.111110 0.111107 0.111112 0.000000 0.000000 0.000000 0.111111 0.000000 0.222218 0.000000 0.111110 1.555496 0.000000 0.105774 0.000000 0.221852 0.000000 0.000000 0.000000 0.000000 0.111110 0.111109 0.111110 0.000000 0.111105 0.000000</value>
+            </counter>
+            <counter id="27">
+                <value>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.110919 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000</value>
+            </counter>
+            <counter id="28">
+                <value>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000</value>
+            </counter>
+            <counter id="29">
+                <value>0.000000 23.000000 45.000000 31.000000 0.000000 0.000000 0.000000 21.000000 0.000000 55.500000 0.000000 0.000000 0.000000 0.000000 22.000000 30.000000 32.000000 0.000000 0.000000 0.000000 22.000000 0.000000 31.000000 36.000000 0.000000 0.000000 0.000000 27.000000 0.000000 36.500000 0.000000 0.000000 0.000000 0.000000 28.000000 51.000000 29.000000 0.000000 0.000000 0.000000 21.000000 0.000000 30.000000 71.000000 0.000000 0.000000 0.000000 23.000000 0.000000 40.500000 0.000000 0.000000 0.000000 0.000000 20.000000 41.000000 33.000000 0.000000 0.000000 0.000000 20.000000 0.000000 41.500000 0.000000 0.000000 0.000000 0.000000 30.000000 0.000000 48.000000 0.000000 0.000000 0.000000 0.000000 20.000000 38.000000 28.000000 0.000000 0.000000 0.000000 21.000000 0.000000 32.500000 0.000000 5.000000 26.769231 4750.000000 35.000000 0.000000 58.500000 0.000000 0.000000 0.000000 0.000000 34.000000 26.000000 65.000000 0.000000 0.000000 0.000000</value>
+            </counter>
+            <counter id="14">
+                <value>0.428930 0.689360 1.991510 0.342120 0.602550 1.731080 0.773466 0.949790 0.515740 1.470650 3.380470 0.949790 16.980151 4.154538 2.508007 1.034794 1.034794 0.601497 2.161368 0.774816 0.948135 1.814730 18.051360 25.039490 60.656564 26.339383 3.114624 3.206850 2.078320 20.829280 52.077269 31.051833 3.027964 0.776170 2.599180 2.599180 0.862980 2.512370 1.731080 0.949790 1.123410 0.342120 0.862980 0.776170 0.255310 0.689360 0.602550 0.515740 0.342120 0.601497 0.776170 0.255310 0.515740 0.689360 0.428930 0.428930 0.602550 1.210220 1.036600 0.862980 0.601497 0.514837 0.776170 8.502260 3.894559 16.026896 27.032659 17.846747 12.127217 2.421347 0.689360 0.255310 0.515740 0.255310 0.342120 0.689360 0.342120 0.689360 0.689360 0.862980 1.036600 1.557460 0.168500 0.428930 0.949790 5.724340 21.399788 21.483583 16.258688 14.207046 0.862980 0.776170 0.342120 0.949790 10.064840 6.852870 0.342120 0.255310 27.426840 57.810340</value>
+            </counter>
+            <counter id="15">
+                <value>357.000000 357.000000 357.000000 356.000000 356.000000 356.000000 355.000000 355.000000 355.000000 355.000000 355.000000 355.000000 187.000000 187.000000 187.000000 187.000000 187.000000 187.000000 187.000000 187.000000 187.000000 178.000000 176.000000 173.000000 24.000000 363.000000 195.000000 195.000000 195.000000 183.000000 31.000000 381.000000 380.000000 379.000000 379.000000 380.000000 380.000000 379.000000 380.000000 379.000000 379.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 380.000000 379.000000 379.000000 379.000000 379.000000 379.000000 372.000000 366.000000 370.000000 364.000000 332.000000 361.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 365.000000 366.000000 366.000000 363.000000 362.000000 359.000000 353.000000 346.000000 345.000000 345.000000 345.000000 345.000000 345.000000 344.000000 343.000000 343.000000 344.000000 339.000000 691.000000</value>
+            </counter>
+            <counter id="16">
+                <value>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 182.792137 1827.915825 1311.482815 291.044621 346.060739 179.243246 104.705581 287.499283 131.319762 279.077243 29.666500 2.329248 0.221827 31.390487 498.902964 1832.874637 2104.966379 586.180375 5.212885 133.878319 3.549382 0.111110 189.217545 26.332981 0.000000 0.000000 0.111110 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.222220 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.444438 3.111072 0.000000 0.000000 0.000000 0.000000 5.555464 136.650331 56.124030 42.701829 35.937507 4.880339 104.707745 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 12.888816 12.221753 14.308567 37.338345 15.944574 48.474699 0.000000 0.000000 0.000000 0.000000 5.999944 11.444263 0.222220 0.111109 0.888838 0.000000</value>
+            </counter>
+            <counter id="17">
+                <value>29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.768532 29.76

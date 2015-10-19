@@ -1,0 +1,9 @@
+
+<LRCreate>
+    <LRRequestType>LR Create Initiated</LRRequestType>
+    <PatientNHSNumber>6086723923</PatientNHSNumber>
+    <LRReasonCode>CC_REFERRAL</LRReasonCode>
+    <WorkGroupCode>854044750040</WorkGroupCode>
+    <CreatedAt>19/11/2011 14:25:48</CreatedAt>
+    <WorkStationName>NHSAPPADC22057</WorkStationName>
+</LRCreate>
