@@ -33,13 +33,13 @@ public class LoadFiles {
         Logger            log       = new Logger();
         Timer             timer     = new Timer();
         FileSource        reader    = new ReadUserMetrics();
-        DatabaseSession   session   = new DatabaseSession();
         LoadData          loader    = new LoadData();
         DatabaseTable     table     = new DatabaseTable();
         String            version   = "V1.3 Released 29-Jan-2013";
         FileReader        fReader   = new FileReader();
         boolean           reportMap = true;
         int[]             counts    = new int[LoadData.State.values().length];
+        DatabaseSession   session;
 
         cmd.addParameter("Server");
         cmd.addParameter("Database");
@@ -114,13 +114,14 @@ public class LoadFiles {
                 log.warning("No files" + (cmd.isPresent("Match")? " matching on " + cmd.getString("Match") : "") + " found in " + cmd.getString("Source"));
             else {
                 log.comment("Found " + files.size() + " file(s)" + (cmd.isPresent("Match")? " matching on " + cmd.getString("Match") : "") + " in " + cmd.getString("Source"));
-                session.open(
+                session = new DatabaseSession (
                         cmd.getString("JDBCProtocol"),
-                        cmd.getString("JDBCDriver"),
                         cmd.getString("Server"),
-                        cmd.getString("Database"),
+                        cmd.getString("Database"));
+                session.setUser(
                         cmd.getString("User"),
                         cmd.getString("Password"));
+                session.connect();
                 loader.setLoadLog("LoadLog");
                 table.setSession(session);
 

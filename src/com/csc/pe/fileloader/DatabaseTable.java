@@ -26,6 +26,20 @@ import java.util.HashMap;
  * @author CClose
  */
 public class DatabaseTable {
+
+    /**
+     * @return the removeQuotes
+     */
+    public boolean isRemoveQuotes() {
+        return removeQuotes;
+    }
+
+    /**
+     * @param removeQuotes the removeQuotes to set
+     */
+    public void setRemoveQuotes(boolean removeQuotes) {
+        this.removeQuotes = removeQuotes;
+    }
     public enum FormatType {
         Date(true),
         Time(true),
@@ -48,6 +62,8 @@ public class DatabaseTable {
     private boolean          strongType     = true;
     private int              rowCount       = 0;
     private int              firstTimeField = -1;
+    private boolean          removeQuotes   = true;
+    
     private SimpleDateFormat fmtDate        = new SimpleDateFormat("dd-MMM-yy HH:mm:ss");
 
     private class Column {
@@ -75,6 +91,10 @@ public class DatabaseTable {
         void setValue(String value) throws SQLException {
             SQLException exception = null;
             
+            if (removeQuotes && value != null) {
+                if (value.startsWith("\"")) value = value.substring(1, value.length());
+                if (value.endsWith("\""))   value = value.substring(0, value.length() - 1);
+            }
             try {
                 if (value == null || value.trim().length() == 0 || value.equalsIgnoreCase("null")) {
                     insert.updateNull(index);
