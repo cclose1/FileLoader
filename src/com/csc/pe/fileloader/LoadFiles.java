@@ -25,6 +25,7 @@ public class LoadFiles {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.InstantiationException
      */
     
     public static void main(String[] args) throws InstantiationException {

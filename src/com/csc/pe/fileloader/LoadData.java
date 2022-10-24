@@ -250,7 +250,7 @@ public class LoadData  {
 
             if (reportMapping) logMapping(column, col == -1? null : table.getColumnName(col), index.isEmpty());
 
-            index.add(new Integer(col));
+            index.add(col);
         }
         return loadData(data, table, allowExists);
     }

@@ -106,7 +106,7 @@ public class FileSource implements DataSource {
         ArrayList<String> fields = null;
 
         if (tagColumn == null || tagIndex >= tags.size()) return fields;
-        fields = new ArrayList<String>(columns.size());
+        fields = new ArrayList<>(columns.size());
 
         fields.add(0, tags.get(tagIndex));
 
@@ -121,13 +121,13 @@ public class FileSource implements DataSource {
     }
     private void setFilter() {
         if (columns != null) {
-            filterIndex = new ArrayList<Integer>();
+            filterIndex = new ArrayList<>();
 
             if (filter != null) {
                 for (int i = 0; i < columns.size(); i++) {
                     int index = filter.getIndex(columns.get(i));
 
-                    filterIndex.add(index == -1? null : new Integer(index));
+                    filterIndex.add(index == -1? null : index);
                 }
             }
         }
@@ -155,7 +155,7 @@ public class FileSource implements DataSource {
      *
      */
     protected ArrayList<String> unpack(String line, int minLength) {
-        ArrayList<String> fields = line == null? null : new ArrayList<String>(Arrays.asList(line.split("" + fieldDelimiter)));
+        ArrayList<String> fields = line == null? null : new ArrayList<>(Arrays.asList(line.split("" + fieldDelimiter)));
 
         for (String s : fields) if (s.trim().isEmpty()) s = null;
         
@@ -168,7 +168,7 @@ public class FileSource implements DataSource {
         setFilter();
     }
     protected void createColumns(int count) {
-        columns = new ArrayList<String>(count);
+        columns = new ArrayList<>(count);
 
         for (int i = 1; i <= count; i++) columns.add("Col" + i);
 
@@ -211,7 +211,7 @@ public class FileSource implements DataSource {
             for (int i = 0; i < filterIndex.size(); i++) {
                 Integer index = filterIndex.get(i);
 
-                if (index != null && !filter.isIncluded(index.intValue(), fields.get(i))) return true;
+                if (index != null && !filter.isIncluded(index, fields.get(i))) return true;
             }
         }
         return false;
@@ -232,7 +232,7 @@ public class FileSource implements DataSource {
      */
     protected ArrayList<String> getFields() throws IOException {
         ArrayList<String> fields = null;
-        String            line   = null;
+        String            line;
         
         while (fields == null) {
             if (tagFields != null && tagIndex < tags.size()) {
@@ -260,12 +260,12 @@ public class FileSource implements DataSource {
         this.reader = new BufferedReader(new InputStreamReader(stream));
     }
     /**
-     * Opens stream. This method establishes the columns returned by getColumns.
-     *<p>
+     * Opens stream.This method establishes the columns returned by getColumns.<p>
      * If setColumns is false, it is up to the implementing class to determine how the columns are derived. On completion
      * of open the global columns must be initialised to the column headings for the file data.
      *
      * @param stream to be opened
+     * @param reference
      * @reference stream reference used to identify stream in reports
      * @param setColumns if false the implementing class is responsible for deriving the columns.
      *
@@ -297,15 +297,16 @@ public class FileSource implements DataSource {
         setTagMap();
     }
     /**
-     * Opens stream. This method establishes the columns returned by getColumns.
+     * Opens stream.This method establishes the columns returned by getColumns.
      *
      * @param stream to be opened
+     * @param reference
      * @reference stream reference used to identify stream in reports
      *
      * @throws IOException
      */
     protected void open(InputStream stream, String reference) throws IOException {
-        open(stream, reference,true);
+        open(stream, reference, true);
     }
     /**
      * Opens file and creates the columns array which may require the first line to be read.
@@ -319,10 +320,11 @@ public class FileSource implements DataSource {
         open(new FileInputStream(file), file.getName().split("\\.")[0], true);
     }
     /**
-     * Opens stream and creates the columns array. This is not implement and must be called via a sub class that
-     * overrides it with an implementation.
+     * Opens stream and creates the columns array.This is not implement and must be called via a sub class that
+ overrides it with an implementation.
      * 
-     * @param file
+     * @param stream
+     * @param reference
      * @param properties
      * @throws IOException
      */
@@ -341,6 +343,7 @@ public class FileSource implements DataSource {
         open(new FileInputStream(file), file.getName().split("\\.")[0], properties);
     }
     
+    @Override
     public String getType() {
         return type;
     }
@@ -351,19 +354,21 @@ public class FileSource implements DataSource {
      *
      * @return source reference
      */
+    @Override
     public String getReference() {
         return reference == null? "" : reference;
      }
 
+    @Override
     public ArrayList<String> getColumns() {
         if (reader != null && pivotFirst != -1) {
-            ArrayList<String> columns = new ArrayList<String>();
+            ArrayList<String> cols = new ArrayList<>();
 
-            for (int i = 0; i < pivotFirst; i++) columns.add(this.columns.get(i));
+            for (int i = 0; i < pivotFirst; i++) cols.add(this.columns.get(i));
 
-            columns.add(pivotKeyColumn);
-            columns.add(pivotValueColumn);
-            return columns;
+            cols.add(pivotKeyColumn);
+            cols.add(pivotValueColumn);
+            return cols;
         }
         return reader == null? null : columns;
     }
@@ -379,6 +384,7 @@ public class FileSource implements DataSource {
      *
      * @throws IOException IO error or line has more fields than columns.
      */
+    @Override
     public ArrayList<String> getValues() throws IOException {
         ArrayList<String> values = null;
 
@@ -395,7 +401,7 @@ public class FileSource implements DataSource {
         }
         if (currentValues != null) {
             if (pivotFirst != -1) {
-                values = new ArrayList<String>();
+                values = new ArrayList<>();
 
                 for (int i = 0; i < pivotFirst; i++) values.add(currentValues.get(i));
 
@@ -416,6 +422,7 @@ public class FileSource implements DataSource {
      * @return location string.
      */
 
+    @Override
     public String getLocation() {
         return getReference() + '(' + count + ')';
     }
@@ -436,9 +443,11 @@ public class FileSource implements DataSource {
         stream = null;
     }
 
+    @Override
     public void setLogger(Logger log) {
         this.log = log;
     }
+    @Override
     public void setFilter(SourceFilter filter) {
         this.filter = filter;
     }
@@ -450,6 +459,10 @@ public class FileSource implements DataSource {
         this.tagSeparator = "" + tagSeparator;
     }
     /**
+     * @param lastKeyColumn
+     * @param pivotKeyColumn
+     * @param pivotValueColumn
+     * @throws java.io.IOException
      */
     public void setPivot(String lastKeyColumn, String pivotKeyColumn, String pivotValueColumn) throws IOException {
         if (reader    != null) throw new IOException("Can't set Pivot for open stream "        + getReference());
@@ -466,11 +479,11 @@ public class FileSource implements DataSource {
         return hasHeader;
     }
     /**
-     * Indicates if the first line of the file contains column headers. If set to false, the number of
-     * fields in the first line defines the number of columns. A column name is created for each field by appending
-     * the column number to the text Col. Column numbers start at 1 and the number is converted without leading spaces or
-     * zeros, e.g the name for column 1 is Col1 and the name for column 10 is Col10.
-     *<p>
+     * Indicates if the first line of the file contains column headers.If set to false, the number of
+ fields in the first line defines the number of columns. A column name is created for each field by appending
+ the column number to the text Col. Column numbers start at 1 and the number is converted without leading spaces or
+ zeros, e.g the name for column 1 is Col1 and the name for column 10 is Col10.
+<p>
      * Existing columns are cleared.
      *<p>
      * The columns are extracted when the file is opened.
@@ -481,6 +494,7 @@ public class FileSource implements DataSource {
      * A fatal error is reported if this method is called while a file is open.
      *
      * @param hasHeader true if the first line does contain column headers.
+     * @throws java.io.IOException
      */
     public void setHasHeader(boolean hasHeader) throws IOException {
         if (reader != null) throw new IOException("Can't set hasHeader for open stream " + getReference());
@@ -488,14 +502,14 @@ public class FileSource implements DataSource {
         this.hasHeader = hasHeader;
     }
     /**
-     * Defines the maximum number of fields in any line of file data. This has the same effect as calling
+     * Defines the maximum number of fields in any line of file data.This has the same effect as calling
      * setHasHeader(false), except that the number of columns is defined by count and not by the number of fields in
-     * the first line of data.
-     *<p>
+     * the first line of data.<p>
      * The effect of this method remains in force until it, or setHasHeader, is called again, i.e. it is not set to
      * the default, which is true, on close.
      *
      * @param count Maximum number of fields in any line of file data.
+     * @throws java.io.IOException
      */
     public void setColumnCount(int count) throws IOException {
         setHasHeader(true);

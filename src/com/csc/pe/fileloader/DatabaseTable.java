@@ -75,7 +75,7 @@ public class DatabaseTable {
         Date                    minTime      = null;
         Date                    maxTime      = null;
         String                  translate    = null;
-        HashMap<String, String> translations = new HashMap<String, String>(); 
+        HashMap<String, String> translations = new HashMap<>(); 
         ResultSet               translator   = null;
         int                     index        = -1;
         int                     type         = -1;
@@ -119,7 +119,7 @@ public class DatabaseTable {
                                 if (newValue.next()) {
                                     translated = newValue.getString("Value");
                                 } else {
-                                    exception = new SQLException("Failed to translate value " + value + " for field " + name + " in table " + table);
+                                    exception = new SQLException("Failed to translate value " + value + " for field " + name + " in table " + getQualifiedTable());
                                     throw exception;
                                 }
                                 newValue.close();
@@ -168,7 +168,7 @@ public class DatabaseTable {
                 }
             } catch (Exception ex) {
                 if (exception == null) 
-                    throw new SQLException("Unable to convert " + value + " to SQL type " + type + " for " + table + '.' + name);
+                    throw new SQLException("Unable to convert " + value + " to SQL type " + type + " for " + getQualifiedTable());
                 else
                     throw exception;
             }
@@ -180,7 +180,7 @@ public class DatabaseTable {
             return maxTime == null? null : new java.sql.Timestamp(maxTime.getTime());
         }
     }
-    private ArrayList<Column> columns = new ArrayList<Column>();
+    private ArrayList<Column> columns = new ArrayList<>();
     
     public void setSession(DatabaseSession session) {
         this.session = session;
@@ -202,7 +202,7 @@ public class DatabaseTable {
         setTable(null, name);
     }
     public String getQualifiedTable(String name) {
-        return schema == null || schema.isEmpty()? '"' + name + '"' : '"' + schema + "\".\"" + name + '"';
+        return session.delimitName(schema == null || schema.isEmpty()? name :  schema + "." + name);
     }
     public String getQualifiedTable() {
         return getQualifiedTable(table);
@@ -232,9 +232,9 @@ public class DatabaseTable {
         if (mustExist) {
             
             if (isAlias)
-                log.fatalError("Alias " + name + " not enabled for table " + table);
+                log.fatalError("Alias " + name + " not enabled for table " + getQualifiedTable());
             else
-                log.fatalError("Column " + name + " not enabled for table " + table);
+                log.fatalError("Column " + name + " not enabled for table " + getQualifiedTable());
         }
         return -1;
     }
@@ -364,7 +364,7 @@ public class DatabaseTable {
         }
     }
     public void setValue(int index, String value) throws SQLException {
-        if (index >= columns.size()) log.fatalError("No column with index " + index + " defined for table " + table);
+        if (index >= columns.size()) log.fatalError("No column with index " + index + " defined for table " + getQualifiedTable());
         
         columns.get(index).setValue(value);
     }
