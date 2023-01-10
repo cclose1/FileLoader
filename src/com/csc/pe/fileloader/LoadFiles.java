@@ -39,7 +39,6 @@ public class LoadFiles {
         String            version   = "V1.3 Released 29-Jan-2013";
         FileReader        fReader   = new FileReader();
         boolean           reportMap = true;
-        int[]             counts    = new int[LoadData.State.values().length];
         DatabaseSession   session;
 
         cmd.addParameter("Server");
@@ -156,14 +155,16 @@ public class LoadFiles {
                 for (FileReader.File f : files) {
                     try {
                         if (loader.isLoaded(table, reader.getType(), f.getName(), reportMap)) {
-                            counts[LoadData.State.AlreadyLoaded.ordinal()]++;
+                            /*
+                             * No action required as already reported
+                             */
                         } else {
                             if (cmd.isPresent("OpenOptions")) {
                                 reader.open(f.open(), f.getName(), cmd.getProperties("OpenOptions"));
                             } else {
                                 reader.open(f.open(), f.getName());
                             }
-                            counts[loader.load(reader, table, !cmd.isPresent("ErrorDuplicates"), reportMap).ordinal()]++;
+                            loader.load(reader, table, !cmd.isPresent("ErrorDuplicates"), reportMap);
                             reportMap = false;
                             reader.close();
                         }
@@ -175,15 +176,10 @@ public class LoadFiles {
                             }
                         }
                     } catch (IOException ex) {
-                        counts[LoadData.State.Error.ordinal()]++;
-                        loader.logLoadError(table, reader.getType(), f.getName(), ex.getMessage());
+                        log.error("Loading table " + table + " from file " + f.getName() + "-error " + ex.getMessage());
                    }
                 }                
-                log.comment(timer.addElapsed(
-                        "From "        + cmd.getString("Source") + 
-                        " loaded "     + (counts[LoadData.State.Success.ordinal()] + counts[LoadData.State.Duplicates.ordinal()]) +
-                        " duplicates " + counts[LoadData.State.AlreadyLoaded.ordinal()] +
-                        " errored "    + counts[LoadData.State.Error.ordinal()]));
+                log.comment(timer.addElapsed("Load from " + cmd.getString("Source") + " complete"));
             }
         } catch (IOException ex) {
             log.error("IO error-" + ex.getMessage());

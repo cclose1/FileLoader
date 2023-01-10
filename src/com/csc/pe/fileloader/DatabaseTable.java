@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,7 +43,7 @@ public class DatabaseTable {
     }
     public enum FormatType {
         Date(true),
-        Time(true),
+        Time(false),
         Timestamp(true);
 
         private boolean isDate = false;
@@ -63,8 +64,6 @@ public class DatabaseTable {
     private int              rowCount       = 0;
     private int              firstTimeField = -1;
     private boolean          removeQuotes   = true;
-    
-    private SimpleDateFormat fmtDate        = new SimpleDateFormat("dd-MMM-yy HH:mm:ss");
 
     private class Column {
         String                  name         = null;
@@ -80,6 +79,28 @@ public class DatabaseTable {
         int                     index        = -1;
         int                     type         = -1;
 
+        private Date valueToDate(String value) throws ParseException {
+            if (formatType == null || inFormat == null) return null;
+            
+            Date timestamp;
+            
+            SimpleDateFormat fmt = new SimpleDateFormat(inFormat);
+            fmt.setLenient(false);
+            
+            timestamp = fmt.parse(value);
+            
+            if (formatType.isDate) {
+                if (minTime == null || minTime.after(timestamp))  minTime = timestamp;
+                if (maxTime == null || maxTime.before(timestamp)) maxTime = timestamp;
+            }
+            return timestamp;
+        }
+        private void throwColumnError(String message, Exception cause) throws SQLException {
+            throw new SQLException(message + " for field " + getQualifiedTable() + "." + name, cause);
+        }
+        private void throwColumnError(String message) throws SQLException {
+            throw new SQLException(message + " for field " + getQualifiedTable() + "." + name);
+        }
         Column(String name, String alias) {
             this.name  = name;
             this.alias = alias;
@@ -89,7 +110,7 @@ public class DatabaseTable {
             this(name, name);
         }
         void setValue(String value) throws SQLException {
-            SQLException exception = null;
+            Date timestamp = null;
             
             if (removeQuotes && value != null) {
                 if (value.startsWith("\"")) value = value.substring(1, value.length());
@@ -116,30 +137,21 @@ public class DatabaseTable {
                                 insert.executeUpdate();
                                 newValue = insert.getGeneratedKeys();
                                 
-                                if (newValue.next()) {
+                                if (newValue.next())
                                     translated = newValue.getString("Value");
-                                } else {
-                                    exception = new SQLException("Failed to translate value " + value + " for field " + name + " in table " + getQualifiedTable());
-                                    throw exception;
-                                }
+                                else
+                                    throwColumnError("Failed to translate value " + value);
+                                
                                 newValue.close();
                                 insert.close();
                             }
                             translations.put(value, translated);
                             translator.close();
                         }
-                    } catch (Exception ex) {
-                        exception = new SQLException("Unable to translate " + value + " using translate table " + translate + "-" + ex.getMessage());
-                        throw exception;
+                    } catch (Exception ex) {                        
+                        throwColumnError("Unable to translate " + value + " using translate table " + translate, ex);
                     }
                     value = translated;
-                }
-                if (formatType == FormatType.Date && inFormat != null) {
-                    Date timestamp = new SimpleDateFormat(inFormat).parse(value);
-                    value = fmtDate.format(timestamp);
-
-                    if (minTime == null || minTime.after(timestamp))  minTime = timestamp;
-                    if (maxTime == null || maxTime.before(timestamp)) maxTime = timestamp;
                 }
                 if (strongType) {
                     value = value.trim();
@@ -149,13 +161,17 @@ public class DatabaseTable {
                             insert.updateInt(index, Integer.parseInt(value));
                             break;
                         case java.sql.Types.TIMESTAMP:
-                            insert.updateTimestamp(index, new java.sql.Timestamp(fmtDate.parse(value).getTime()));
+                            timestamp = valueToDate(value);
+                            insert.updateTimestamp(index, new java.sql.Timestamp(timestamp.getTime()));
                             break;
                         case java.sql.Types.DATE:
-                            insert.updateDate(index, new java.sql.Date(fmtDate.parse(value).getTime()));
+                            timestamp = valueToDate(value);
+                            insert.updateDate(index, new java.sql.Date(timestamp.getTime()));
                             break;
                         case java.sql.Types.TIME:
-                            insert.updateTime(index, new java.sql.Time(fmtDate.parse(value).getTime()));
+                            timestamp = valueToDate(value);
+//                            insert.updateString(index, DatabaseSession.getTimeString(timestamp));
+                            insert.updateTime(index, new java.sql.Time(timestamp.getTime()));
                             break;
                         case java.sql.Types.DOUBLE:
                             insert.updateDouble(index, Double.parseDouble(value));
@@ -167,10 +183,7 @@ public class DatabaseTable {
                     insert.updateString(index, value);
                 }
             } catch (Exception ex) {
-                if (exception == null) 
-                    throw new SQLException("Unable to convert " + value + " to SQL type " + type + " for " + getQualifiedTable());
-                else
-                    throw exception;
+                throwColumnError("Unable to convert " + value + " to SQL type " + type, ex);
             }
         }
         java.sql.Timestamp getMinTime() {
@@ -212,6 +225,14 @@ public class DatabaseTable {
     }
     public int getColumnCount() {
         return columns.size();
+    }
+    /*
+     * This is been added to correct the situation where insertRow throws an exception after a
+     * successful insert. This is commented on in LoadFile where MySql throws a syntax exception on
+     * a successful insert to table WeeklyFuelPrices.
+     */
+    public void incrementRowCount() {
+        rowCount++;
     }
     public int getRowCount() {
         return rowCount;
@@ -265,7 +286,7 @@ public class DatabaseTable {
     }
     public void setColumns(File file) throws FileNotFoundException, IOException, SQLException {
         BufferedReader cols  = new BufferedReader(new FileReader(file));
-        String         line  = null;
+        String         line;
         int            count = 0;
 
         while ((line = cols.readLine()) != null) {
@@ -280,7 +301,7 @@ public class DatabaseTable {
                     value = line.substring(i + 1);
                     name  = line.substring(0, i);
 
-                    if (value.equalsIgnoreCase("!StartTimestamp")) value = fmtDate.format(new Date());
+                    if (value.equalsIgnoreCase("!StartTimestamp")) value = session.getDateTimeString(new Date());
                 }
                 String fields[] = name.split(",");
 
@@ -309,6 +330,8 @@ public class DatabaseTable {
                             
                             if (fmt[0].equalsIgnoreCase("!date"))
                                 setInputFormat(columns.size() - 1, FormatType.Date, fmt[1]);
+                            else if (fmt[0].equalsIgnoreCase("!time"))
+                                setInputFormat(columns.size() - 1, FormatType.Time, fmt[1]);
                             else if (fmt[0].equalsIgnoreCase("!translate"))
                                 setTranslate(columns.size() - 1, fmt[1]);
                             else

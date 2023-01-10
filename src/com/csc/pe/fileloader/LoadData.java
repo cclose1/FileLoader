@@ -21,13 +21,10 @@ import java.util.Date;
 public class LoadData  {
     private Logger             log     = new Logger();
     private String             loadLog = null;
-    private ArrayList<Integer> index   = new ArrayList<Integer>();
+    private ArrayList<Integer> index   = new ArrayList<>();
 
-    public enum State {
-        Success,
-        Duplicates,
-        AlreadyLoaded,
-        Error;
+    public String getMessageWithCause(SQLException error) {
+        return error.getMessage() + (error.getCause() != null? " cause-" + error.getCause().getMessage() : "");
     }
     public void setLog(Logger log) {
         this.log = log;
@@ -81,7 +78,7 @@ public class LoadData  {
             this.table     = table;
             this.type      = type;
             this.reference = reference;
-            sql = "SELECT * FROM " + loadLog  + " WHERE \"Type\" = '" + type + "' AND \"Reference\" = '" + reference + "'";
+            sql = "SELECT * FROM " + loadLog  + " WHERE Type = '" + type + "' AND Reference = '" + reference + "'";
             openResultSet();
         }
         public LoadLog() {
@@ -110,11 +107,11 @@ public class LoadData  {
         public void setDuplicates(int duplicates) throws SQLException {
             if (openResultSet(true)) log.updateInt("Duplicates", duplicates);
         }
+        public void setErrors(int duplicates) throws SQLException {
+            if (openResultSet(true)) log.updateInt("Errors", duplicates);
+        }
         public void setDuration(double duration) throws SQLException {
             if (openResultSet(true)) log.updateDouble("Duration", duration);
-        }
-        public void setError(String error) throws SQLException {
-            if (openResultSet(true)) log.updateString("Error", error);
         }
         public void flush() throws SQLException {
             if (openResultSet()) {
@@ -148,31 +145,19 @@ public class LoadData  {
 
         return loaded;
     }
-    public void logLoadError(DatabaseTable table, String type, String reference, String error) {
-        try {
-            LoadLog dbLog = new LoadLog(table.getSession(), table.getTable(), type, reference);
-
-            dbLog.setError(error);
-            log.error("Load to " + table.getTable() + " of " + type + '.' + reference + " error-" + error);
-            dbLog.close();
-        } catch (SQLException ex) {
-            if (table.getSession().getStandardError(ex) != DatabaseSession.Error.Duplicate) {
-                log.error("On " + reference + " logging error " + error + " failed with-" + ex.getMessage());
-            }
-        }
-    }
-    private State loadData(DataSource data, DatabaseTable table, boolean allowExists) throws SQLException, IOException {
-        ArrayList<String> values     = null;
-        Timer             timer      = new Timer();
-        int               duplicates = 0;
-        State             state      = State.Success;
-        LoadLog           dbLog      = new LoadLog(table.getSession(), table.getTable(), data.getType(), data.getReference());
+    private void loadData(DataSource data, DatabaseTable table, boolean allowExists) throws SQLException, IOException {
+        ArrayList<String> values;
+        Timer             timer                 = new Timer();
+        int               duplicates            = 0;
+        int               errors                = 0;
+        boolean           spuriousErrorReported = false;
+        LoadLog           dbLog                 = new LoadLog(table.getSession(), table.getTable(), data.getType(), data.getReference());
 
         if (!dbLog.isNew()) {
             this.log.report(
                     Logger.Type.Warning,
                     "Data set " + data.getReference() + " already loaded on " + dbLog.getLoaded());
-            return State.AlreadyLoaded;
+            return;
         }
         table.open();
 
@@ -182,7 +167,7 @@ public class LoadData  {
                     table.addRow();
 
                     for (int i = 0; i < values.size(); i++) {
-                        int fldIndex = index.get(i).intValue();
+                        int fldIndex = index.get(i);
 
                         if (fldIndex != -1) {
                             table.setValue(fldIndex, values.get(i));
@@ -192,31 +177,40 @@ public class LoadData  {
                 } catch (SQLException ex) {
                     if (allowExists && table.getSession().getStandardError(ex) == DatabaseSession.Error.Duplicate) {
                         duplicates++;
-                        state = State.Duplicates;
                         log.warning("Data at " + data.getLocation() + " already loaded to " + table.getTable());
                     } else {
-                        dbLog.setError(ex.getMessage());
-                        dbLog.flush();
-                        log.error("At " + data.getLocation() + " error-" + ex.getMessage());
-                        state = State.Error;
-                        break;
+                        if (ex.getErrorCode() == 1064 && table.getSession().getProtocol().equalsIgnoreCase("mysql")) {
+                            /*
+                             * On mysql the data insert appears to work, but an exception indicating a syntax error
+                             * is thrown. Report the first occurrence of it. So far only occurs on table WeeklyFuelPrices.
+                             *
+                             * Note: This was not always the case. Don't know what changed to cause this.
+                             */
+                            if (!spuriousErrorReported) {
+                                log.warning("Data at " + data.getLocation() + " generated syntax error, although loaded. Subsequent such errors ignored");
+                                log.warning("Syntax error messsage-" + ex.getMessage());
+                                spuriousErrorReported = true;
+                            }
+                            table.incrementRowCount();
+                        } else {
+                            errors++;
+                            log.error("At " + data.getLocation() + " error-" + getMessageWithCause(ex));
+                        }
                     }
                 }
             }
         } catch (IOException ex) {
-            dbLog.setError(ex.getMessage());
-            dbLog.flush();
+            errors++;
             log.error("At " + data.getLocation() + " error-" + ex.getMessage());
-            state = State.Error;
         }
         table.close();
         dbLog.setRows(table.getRowCount());
         dbLog.setDataStart(table.getMinTimestamp());
         dbLog.setDataEnd(table.getMaxTimestamp());
         dbLog.setDuplicates(duplicates);
+        dbLog.setErrors(errors);
         dbLog.setDuration(timer.getElapsed());
         dbLog.close();
-        return state;
     }
     
     private void logMapping(String dataColumn, String dbColumn, boolean first) {
@@ -232,7 +226,7 @@ public class LoadData  {
         }
         log.comment(line.toString());
     }
-    public State load(DataSource data, DatabaseTable table, boolean allowExists, boolean reportMapping) throws SQLException, IOException {
+    public void load(DataSource data, DatabaseTable table, boolean allowExists, boolean reportMapping) throws SQLException, IOException {
         int count = table.getColumnCount();
         
         for (int i = 0; i < count; i++) {
@@ -252,6 +246,6 @@ public class LoadData  {
 
             index.add(col);
         }
-        return loadData(data, table, allowExists);
+        loadData(data, table, allowExists);
     }
 }
