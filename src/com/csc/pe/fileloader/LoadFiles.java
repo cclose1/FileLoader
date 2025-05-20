@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TimeZone;
 /**
  *
  * @author CClose
@@ -40,7 +41,8 @@ public class LoadFiles {
         FileReader        fReader   = new FileReader();
         boolean           reportMap = true;
         DatabaseSession   session;
-
+        
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
         cmd.addParameter("Server");
         cmd.addParameter("Database");
         cmd.addParameter("Table");

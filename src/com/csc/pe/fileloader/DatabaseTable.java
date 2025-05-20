@@ -298,8 +298,8 @@ public class DatabaseTable {
                 int    i     = line.indexOf('=');
 
                 if (i != -1) {
-                    value = line.substring(i + 1);
-                    name  = line.substring(0, i);
+                    value = line.substring(i + 1).trim();
+                    name  = line.substring(0, i).trim();
 
                     if (value.equalsIgnoreCase("!StartTimestamp")) value = session.getDateTimeString(new Date());
                 }
@@ -308,10 +308,10 @@ public class DatabaseTable {
                 try {
                     switch (fields.length) {
                         case 1:
-                            setColumn(fields[0], fields[0]);
+                            setColumn(fields[0].trim(), fields[0].trim());
                             break;
                         case 2:
-                            setColumn(fields[0], fields[1]);
+                            setColumn(fields[0].trim(), fields[1].trim());
                             break;
                         default:
                             throw new IOException("In column map " + file.getName() + " at line " + count + "- invalid map " + line);

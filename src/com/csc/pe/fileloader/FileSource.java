@@ -155,10 +155,19 @@ public class FileSource implements DataSource {
      *
      */
     protected ArrayList<String> unpack(String line, int minLength) {
-        ArrayList<String> fields = line == null? null : new ArrayList<>(Arrays.asList(line.split("" + fieldDelimiter)));
-
-        for (String s : fields) if (s.trim().isEmpty()) s = null;
+        if (line == null) return null;      
         
+        ArrayList<String> fields = new ArrayList<>(Arrays.asList(line.split("" + fieldDelimiter)));
+        /*
+         * Remove leading and trailing spaces and set empty fields to null.
+         */
+        for (int i = 0; i < fields.size(); i++) {
+            String s = fields.get(i).trim();
+            
+            if (s.isEmpty()) s = null;
+            
+            fields.set(i, s);
+        }
         while (fields.size() < minLength) fields.add(null);
 
         return fields;
